@@ -24,6 +24,7 @@ namespace GameStore
             services.AddDbContext<GameStoreDBContext>(
                 options => options.UseNpgsql("Host=localhost;Port=5432;Database=GameStoreDatabase;Username=postgres;Password=123789"));
 
+            services.AddScoped<GameService>();
             services.AddScoped<HashService>();
             services.AddScoped<RoleService>();
             services.AddScoped<UserService>();
