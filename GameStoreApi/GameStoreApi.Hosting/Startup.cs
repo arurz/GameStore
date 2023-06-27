@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using GameStoreApi.Infrastructure.DependencyInjections;
+using GameStoreApi.Infrastructure.Middlewares;
 
 namespace GameStoreApi.Hosting
 {
@@ -34,6 +35,8 @@ namespace GameStoreApi.Hosting
 				app.UseSwagger();
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GameStoreApi.Hosting v1"));
 			}
+
+			app.UseMiddleware<ErrorLoggingMiddleware>();
 
 			app.UseRouting();
 
