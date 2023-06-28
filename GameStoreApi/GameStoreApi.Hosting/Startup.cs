@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using GameStoreApi.Infrastructure.DependencyInjections;
 using GameStoreApi.Infrastructure.Middlewares;
+using System;
 
 namespace GameStoreApi.Hosting
 {
@@ -20,6 +21,7 @@ namespace GameStoreApi.Hosting
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDBConnections(Configuration);
+			services.AddServices();
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
@@ -35,6 +37,8 @@ namespace GameStoreApi.Hosting
 				app.UseSwagger();
 				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GameStoreApi.Hosting v1"));
 			}
+
+			AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
 			app.UseMiddleware<ErrorLoggingMiddleware>();
 

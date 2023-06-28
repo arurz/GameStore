@@ -4,4 +4,9 @@
     <TargetFramework>net7.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GameStoreApi.Data\GameStoreApi.Data.csproj" />
+    <ProjectReference Include="..\GameStoreApi.Persistence\GameStoreApi.Persistence.csproj" />
+  </ItemGroup>
+
 </Project>
