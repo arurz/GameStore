@@ -2,7 +2,7 @@
 using System;
 using System.Text.Json.Serialization;
 
-namespace GameStoreApi.Infrastructure.DomainValidation.Models
+namespace GameStoreApi.Application.DomainValidation.Models
 {
 	public class DomainErrorMessage
 	{

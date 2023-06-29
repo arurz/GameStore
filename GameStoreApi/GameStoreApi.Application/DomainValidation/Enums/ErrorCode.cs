@@ -1,4 +1,4 @@
-﻿namespace GameStoreApi.Infrastructure.DomainValidation.Enums
+﻿namespace GameStoreApi.Application.DomainValidation.Enums
 {
 	public enum ErrorCode
 	{
@@ -11,6 +11,8 @@
 		User_ChangePasswordOldPasswordMismatch = 207,
 		User_CannotRestoreUserPassword = 208,
 		User_NotFound = 209,
-		User_CartAlreadyExists = 210
+		User_CartAlreadyExists = 210,
+
+		Game_AlreadyExists = 211
 	}
 }

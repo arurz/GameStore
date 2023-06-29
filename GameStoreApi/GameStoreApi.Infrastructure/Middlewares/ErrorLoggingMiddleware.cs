@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Http;
 using GameStoreApi.Infrastructure.Middlewares.Interfaces;
 using GameStoreApi.Data.Errors;
 using GameStoreApi.Infrastructure.Middlewares.Models;
-using GameStoreApi.Infrastructure.DomainValidation.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using GameStoreApi.Application.DomainValidation.Models;
 
 namespace GameStoreApi.Infrastructure.Middlewares
 {
