@@ -11,8 +11,9 @@ namespace GameStoreApi.Data.Games
 		public string Description { get; set; }
 		public string MinimumSystemRequirements { get; set; }
 		public decimal Price { get; set; }
+		public bool IsActive { get; set; } = true;
 
-		public ICollection<GenreGame> GameTypes { get; set; } = new List<GenreGame>();
+        public ICollection<GenreGame> GameTypes { get; set; } = new List<GenreGame>();
 		public ICollection<Comment> Comments { get; set; } = new List<Comment>();
 		public ICollection<Cart> Carts { get; set; } = new List<Cart>();
 		public ICollection<GameCompany> GameCompanies { get; set; } = new List<GameCompany>();
