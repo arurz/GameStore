@@ -5,6 +5,8 @@ using GameStoreApi.Application.Nomenclatures.Services;
 using GameStoreApi.Data.Users;
 using GameStoreApi.Application.Nomenclatures.Interfaces;
 using GameStoreApi.Data.Games;
+using GameStoreApi.Application.Users.Interfaces;
+using GameStoreApi.Application.Users.Services;
 
 namespace GameStoreApi.Infrastructure.DependencyInjections
 {
@@ -18,6 +20,7 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 			services.AddScoped<INomenclatureService<Genre>, NomenclatureService<Genre>>();
 			services.AddScoped<INomenclatureService<Company>, NomenclatureService<Company>>();
 
+			services.AddScoped<IAdminService, AdminService>();
 
 			return services;
 		}

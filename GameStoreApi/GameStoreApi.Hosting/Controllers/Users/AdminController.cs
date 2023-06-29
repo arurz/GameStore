@@ -1,12 +1,50 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using GameStoreApi.Application.Users.Interfaces;
+using GameStoreApi.Data.Games.Dtos;
+using GameStoreApi.Data.Games;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GameStoreApi.Hosting.Controllers.Users
 {
-	public class AdminController : Controller
+	[ApiController]
+	[Route("api/[controller]")]
+	public class AdminController : ControllerBase
 	{
-		public IActionResult Index()
+		private readonly IAdminService adminService;
+
+        public AdminController(IAdminService adminService)
+        {
+			this.adminService = adminService;
+        }
+
+		[HttpGet("game/{id}")]
+		public async Task<ActionResult<Game>> GetGame([FromRoute] int id) => await adminService.GetGame(id);
+
+		[HttpGet("names")]
+		public async Task<ActionResult<List<GameNameIdDto>>> GetGameNames() => await adminService.GetGameNameIdDtos();
+
+		[HttpPost("create")]
+		public async Task<IActionResult> CreateGame([FromBody] Game game)
 		{
-			return View();
+			await adminService.CreateGame(game);
+			return CreatedAtAction(nameof(CreateGame), new { id = game.Id }, game);
 		}
+
+		[HttpDelete("delete/{id}")]
+		public async Task<IActionResult> DeactivateGame([FromRoute] int id)
+		{
+			await adminService.DeactivateGame(id);
+
+			return Ok();
+		}
+
+		[HttpPut("update")]
+		public async Task<IActionResult> UpdateGame([FromBody] Game game)
+		{
+			await adminService.UpdateGame(game);
+			return Ok(game);
+		}
+
 	}
 }
