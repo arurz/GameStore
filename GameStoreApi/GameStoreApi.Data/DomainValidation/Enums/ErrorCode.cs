@@ -1,7 +1,9 @@
-﻿namespace GameStoreApi.Application.DomainValidation.Enums
+﻿namespace GameStoreApi.Data.DomainValidation.Enums
 {
 	public enum ErrorCode
 	{
+		#region UserErrors
+
 		User_EmailTaken = 201,
 		User_InvalidCredentials = 202,
 		User_UserAlreadyUnlocked = 203,
@@ -12,7 +14,15 @@
 		User_CannotRestoreUserPassword = 208,
 		User_NotFound = 209,
 		User_CartAlreadyExists = 210,
+		User_UsernameTaken = 211,
 
-		Game_AlreadyExists = 211
+		#endregion
+
+
+		#region GameErrors
+
+		Game_AlreadyExists = 301
+
+		#endregion
 	}
 }

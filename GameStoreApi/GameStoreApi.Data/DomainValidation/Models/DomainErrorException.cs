@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GameStoreApi.Application.DomainValidation.Models
+namespace GameStoreApi.Data.DomainValidation.Models
 {
 	public class DomainErrorException : Exception
 	{

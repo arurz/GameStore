@@ -8,7 +8,7 @@ using GameStoreApi.Data.Errors;
 using GameStoreApi.Infrastructure.Middlewares.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
-using GameStoreApi.Application.DomainValidation.Models;
+using GameStoreApi.Data.DomainValidation.Models;
 
 namespace GameStoreApi.Infrastructure.Middlewares
 {

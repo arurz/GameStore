@@ -1,7 +1,7 @@
-﻿using GameStoreApi.Application.DomainValidation.Models;
+﻿using GameStoreApi.Data.DomainValidation.Models;
 using System;
 
-namespace GameStoreApi.Application.DomainValidation.Services
+namespace GameStoreApi.Data.DomainValidation.Services
 {
 	public static class DomainValidationService
 	{
