@@ -1,14 +1,15 @@
-﻿using GameStoreApi.Application.DomainValidation.Enums;
-using GameStoreApi.Application.DomainValidation.Services;
-using GameStoreApi.Application.Users.Interfaces;
+﻿using GameStoreApi.Data.DomainValidation.Enums;
+using GameStoreApi.Data.DomainValidation.Services;
+using GameStoreApi.Application.Users.Admin.Interfaces;
 using GameStoreApi.Data.Games;
 using GameStoreApi.Data.Games.Dtos;
 using GameStoreApi.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
-namespace GameStoreApi.Application.Users.Services
+namespace GameStoreApi.Data.Users.Admin.Services
 {
 	public class AdminService : IAdminService
 	{
@@ -66,14 +67,11 @@ namespace GameStoreApi.Application.Users.Services
 
 		public async Task<bool> IsGameExists(string name)
 		{
-			var games = await context.Games.ToListAsync();
-			foreach (var game in games)
-			{
-				if (game.Name == name)
-				{
-					return true;
-				}
-			}
+			var games = await context.Games.Where(g => g.Name == name)
+				.ToListAsync();
+			if (games.Any())
+				return true;
+
 			return false;
 		}
 
