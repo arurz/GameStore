@@ -1,13 +1,13 @@
-﻿using GameStoreApi.Application.Users.Interfaces;
-using GameStoreApi.Data.Games.Dtos;
+﻿using GameStoreApi.Data.Games.Dtos;
 using GameStoreApi.Data.Games;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using GameStoreApi.Application.Users.Admin.Interfaces;
 
 namespace GameStoreApi.Hosting.Controllers.Users
 {
-	[ApiController]
+    [ApiController]
 	[Route("api/[controller]")]
 	public class AdminController : ControllerBase
 	{
