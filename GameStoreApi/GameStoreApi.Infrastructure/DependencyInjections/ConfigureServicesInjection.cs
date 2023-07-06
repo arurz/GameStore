@@ -36,6 +36,7 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 			#region User Services
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IRegisterService, RegisterService>();
+			services.AddScoped<ILoginService, LoginService>();
 			#endregion
 
 			#region CheckUniqueProperties Services
