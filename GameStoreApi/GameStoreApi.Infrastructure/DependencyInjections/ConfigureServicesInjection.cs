@@ -20,6 +20,8 @@ using GameStoreApi.Application.Users.Login.Interfaces;
 using GameStoreApi.Application.Users.Login.Services;
 using GameStoreApi.Application.Games.Interfaces;
 using GameStoreApi.Application.Games.Services;
+using GameStoreApi.Application.Communications.SignalR.Services;
+using GameStoreApi.Application.Communications.SignalR.Hubs;
 
 namespace GameStoreApi.Infrastructure.DependencyInjections
 {
@@ -35,6 +37,8 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 
 			#region Communication Services
 			services.AddScoped<MailService>();
+			services.AddScoped<MessageService>();
+			services.AddScoped<ChatHub>();
 			#endregion
 
 			#region Nomenclature Services

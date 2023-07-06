@@ -1,5 +1,5 @@
-﻿using GameStoreApi.Data.Games;
-using GameStoreApi.Data.Messages;
+﻿using GameStoreApi.Data.Chat;
+using GameStoreApi.Data.Games;
 using GameStoreApi.Data.Users;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace GameStoreApi.Persistence
 {
-	public class AppDbContext : DbContext
+    public class AppDbContext : DbContext
 	{
 		public DbSet<GameCompany> GameCompanies { get; set; }
 		public DbSet<Role> Roles { get; set; }
@@ -28,7 +28,9 @@ namespace GameStoreApi.Persistence
 		{
 			var entries = ChangeTracker
 				.Entries()
-				.Where(x => x.State == EntityState.Added && x.Entity is Comment || x.Entity is Cart);
+				.Where(x => x.State == EntityState.Added && x.Entity is Comment ||
+															x.Entity is Cart ||
+															x.Entity is Message);
 
 			foreach (var entry in entries)
 			{

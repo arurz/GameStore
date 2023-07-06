@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using GameStoreApi.Infrastructure.DependencyInjections;
 using GameStoreApi.Infrastructure.Middlewares;
 using System;
+using GameStoreApi.Application.Communications.SignalR.Hubs;
 
 namespace GameStoreApi.Hosting
 {
@@ -21,24 +22,25 @@ namespace GameStoreApi.Hosting
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddDBConnections(Configuration);
+
 			services.AddServices();
+
 			services.AddControllers();
-			services.AddSwaggerGen(c =>
-			{
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "GameStoreApi.Hosting", Version = "v1" });
-			});
+
+			services.AddSignalR();
+
+			services.AddCors();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
-			if (env.IsDevelopment())
-			{
-				app.UseDeveloperExceptionPage();
-				app.UseSwagger();
-				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "GameStoreApi.Hosting v1"));
-			}
-
 			AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
+			app.UseCors(builder => builder.WithOrigins(
+				"http://localhost:4200")
+				.AllowAnyHeader()
+				.AllowAnyMethod()
+				.AllowCredentials());
 
 			app.UseMiddleware<ErrorLoggingMiddleware>();
 
@@ -49,6 +51,7 @@ namespace GameStoreApi.Hosting
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
+				endpoints.MapHub<ChatHub>("/ChatHub");
 			});
 		}
 	}
