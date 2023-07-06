@@ -45,6 +45,7 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 			services.AddScoped<IGameService, GameService>();
 			services.AddScoped<ICartService, CartService>();
 			services.AddScoped<ICommentService, CommentService>();
+			services.AddScoped<IGenreGameService, GenreGameService>();
 			services.AddScoped<IGameCompanyService, GameCompanyService>();
 			#endregion
 
