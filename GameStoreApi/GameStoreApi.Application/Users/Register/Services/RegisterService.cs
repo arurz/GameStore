@@ -1,4 +1,5 @@
 ﻿using GameStoreApi.Application.Hashing;
+using GameStoreApi.Application.Users.Common.Interfaces;
 using GameStoreApi.Application.Users.Register.Interfaces;
 using GameStoreApi.Data.DomainValidation.Enums;
 using GameStoreApi.Data.DomainValidation.Services;
@@ -6,7 +7,6 @@ using GameStoreApi.Data.Users;
 using GameStoreApi.Data.Users.Constants;
 using GameStoreApi.Persistence;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,18 +15,22 @@ namespace GameStoreApi.Application.Users.Register.Services
 	public class RegisterService : IRegisterService
 	{
 		private readonly AppDbContext context;
-        public RegisterService(AppDbContext context)
+		private readonly ICheckUniqueUsername checkUniqueUsername;
+		private readonly ICheckUniqueEmail checkUniqueEmail;
+        public RegisterService(AppDbContext context, ICheckUniqueEmail checkUniqueEmail, ICheckUniqueUsername checkUniqueUsername)
         {
 			this.context = context;
+			this.checkUniqueUsername = checkUniqueUsername;
+			this.checkUniqueEmail = checkUniqueEmail;
         }
         public async Task<User> CreateUser(User user)
 		{
-			if (!await IsEmailUnique(user.Email))
+			if (!await checkUniqueEmail.IsEmailUnique(user.Email))
 			{
 				DomainValidationService.ThrowErrorMessage(ErrorCode.User_EmailTaken);
 			}
 
-			if (!await IsUsernameUnique(user.Username))
+			if (!await checkUniqueUsername.IsUsernameUnique(user.Username))
 			{
 				DomainValidationService.ThrowErrorMessage(ErrorCode.User_UsernameTaken);
 			}
@@ -43,26 +47,6 @@ namespace GameStoreApi.Application.Users.Register.Services
 			await context.SaveChangesAsync();
 
 			return user;
-		}
-
-		public async Task<bool> IsEmailUnique(string email)
-		{
-			var users = await context.Users.Where(u => u.Email == email)
-				.ToListAsync();
-			if (users.Any())
-				return false;
-
-			return true;
-		}
-
-		public async Task<bool> IsUsernameUnique(string username)
-		{
-			var users = await context.Users.Where(u => u.Username == username)
-				.ToListAsync();
-			if(users.Any())
-				return false;
-
-			return true;
 		}
 	}
 }

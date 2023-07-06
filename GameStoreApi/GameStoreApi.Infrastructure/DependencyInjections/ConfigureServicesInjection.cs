@@ -25,6 +25,10 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 			services.AddScoped<IAdminService, AdminService>();
 
 			services.AddScoped<IRegisterService, RegisterService>();
+			#region CheckUniqueProperties Services
+			services.AddScoped<ICheckUniqueEmail, CheckUniqueEmailService>();
+			services.AddScoped<ICheckUniqueUsername, CheckUniqueUsernameService>();
+			#endregion
 
 			return services;
 		}
