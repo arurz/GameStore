@@ -28,7 +28,7 @@ namespace GameStoreApi.Persistence
 		{
 			var entries = ChangeTracker
 				.Entries()
-				.Where(x => x.State == EntityState.Added && x.Entity is Comment);
+				.Where(x => x.State == EntityState.Added && x.Entity is Comment || x.Entity is Cart);
 
 			foreach (var entry in entries)
 			{
