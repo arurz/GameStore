@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.8" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.31.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\GameStoreApi.Data\GameStoreApi.Data.csproj" />
     <ProjectReference Include="..\GameStoreApi.Persistence\GameStoreApi.Persistence.csproj" />
   </ItemGroup>

@@ -9,6 +9,15 @@ using GameStoreApi.Application.Users.Admin.Interfaces;
 using GameStoreApi.Data.Users.Admin.Services;
 using GameStoreApi.Application.Users.Register.Services;
 using GameStoreApi.Application.Users.Register.Interfaces;
+using GameStoreApi.Application.Users.Common.Interfaces;
+using GameStoreApi.Application.Users.Common.Services;
+using GameStoreApi.Application.Communications.Mail;
+using GameStoreApi.Application.Users.Users.Services;
+using GameStoreApi.Application.Users.Users.Interfaces;
+using GameStoreApi.Application.Hashing;
+using GameStoreApi.Application.Token;
+using GameStoreApi.Application.Users.Login.Interfaces;
+using GameStoreApi.Application.Users.Login.Services;
 
 namespace GameStoreApi.Infrastructure.DependencyInjections
 {
@@ -18,6 +27,7 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 		{
 			#region Infrastructure Services
 			services.AddScoped<IErrorService, ErrorService>();
+			services.AddScoped<HashService>();
 			services.AddScoped<JwtService>();
 			#endregion
 
@@ -34,6 +44,7 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 			services.AddScoped<ICommentService, CommentService>();
 
 			#region User Services
+			services.AddScoped<IAdminService, AdminService>();
 			services.AddScoped<IUserService, UserService>();
 			services.AddScoped<IRegisterService, RegisterService>();
 			services.AddScoped<ILoginService, LoginService>();
