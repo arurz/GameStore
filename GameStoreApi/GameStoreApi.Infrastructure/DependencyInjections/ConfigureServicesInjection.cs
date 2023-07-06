@@ -27,6 +27,7 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 
 			services.AddScoped<IAdminService, AdminService>();
 			services.AddScoped<ICartService, CartService>();
+			services.AddScoped<ICommentService, CommentService>();
 
 			services.AddScoped<IRegisterService, RegisterService>();
 			#region CheckUniqueProperties Services
