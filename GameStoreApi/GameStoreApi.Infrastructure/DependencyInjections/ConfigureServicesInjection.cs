@@ -18,6 +18,8 @@ using GameStoreApi.Application.Hashing;
 using GameStoreApi.Application.Token;
 using GameStoreApi.Application.Users.Login.Interfaces;
 using GameStoreApi.Application.Users.Login.Services;
+using GameStoreApi.Application.Games.Interfaces;
+using GameStoreApi.Application.Games.Services;
 
 namespace GameStoreApi.Infrastructure.DependencyInjections
 {
@@ -43,6 +45,7 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 			services.AddScoped<IGameService, GameService>();
 			services.AddScoped<ICartService, CartService>();
 			services.AddScoped<ICommentService, CommentService>();
+			services.AddScoped<IGameCompanyService, GameCompanyService>();
 			#endregion
 
 			#region User Services
