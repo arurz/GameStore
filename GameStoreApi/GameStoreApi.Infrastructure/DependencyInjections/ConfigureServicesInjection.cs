@@ -39,9 +39,11 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 			services.AddScoped<INomenclatureService<Genre>, NomenclatureService<Genre>>();
 			services.AddScoped<INomenclatureService<Company>, NomenclatureService<Company>>();
 
-			services.AddScoped<IAdminService, AdminService>();
+			#region Game Services
+			services.AddScoped<IGameService, GameService>();
 			services.AddScoped<ICartService, CartService>();
 			services.AddScoped<ICommentService, CommentService>();
+			#endregion
 
 			#region User Services
 			services.AddScoped<IAdminService, AdminService>();
