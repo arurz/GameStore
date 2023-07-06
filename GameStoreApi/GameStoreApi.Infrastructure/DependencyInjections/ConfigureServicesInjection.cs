@@ -17,6 +17,9 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 		public static IServiceCollection AddServices(this IServiceCollection services)
 		{
 			services.AddScoped<IErrorService, ErrorService>();
+			#region Communication Services
+			services.AddScoped<MailService>();
+			#endregion
 
 			services.AddScoped<INomenclatureService<Role>, NomenclatureService<Role>>();
 			services.AddScoped<INomenclatureService<Genre>, NomenclatureService<Genre>>();
