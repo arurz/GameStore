@@ -37,6 +37,7 @@ namespace GameStoreApi.Infrastructure.DependencyInjections
 
 			#region Communication Services
 			services.AddScoped<MailService>();
+			services.AddScoped<ChatService>();
 			services.AddScoped<MessageService>();
 			services.AddScoped<ChatHub>();
 			#endregion
