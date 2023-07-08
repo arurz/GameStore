@@ -23,6 +23,8 @@ namespace GameStoreApi.Hosting
 		{
 			services.AddDBConnections(Configuration);
 
+			services.AddAuthenticationService(Configuration);
+
 			services.AddServices();
 
 			services.AddControllers();
