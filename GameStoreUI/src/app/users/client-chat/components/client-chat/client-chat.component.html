@@ -1,0 +1,55 @@
+<div *ngIf="isChatEnabled" class="d-flex" style="z-index: 5; bottom: 0; position: sticky; justify-content: flex-end;margin-bottom: 1rem;margin-right: 2rem;">
+    <div class="padding">
+        <div class="row" style="display: flex;justify-content: flex-end;">
+            <div style="width: 350px;">
+                <div class="card card-bordered" style="box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);">
+                    <div class="card-header">
+                        <h4 class="card-title"><strong>Chat with Support team</strong></h4>
+                    </div>
+                    <div #scrollY class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
+                        <div *ngFor="let message of messages" 
+                            [ngClass]="message.fromUserId == clientId ? 'media media-chat media-chat-reverse' : 'media media-chat'">
+                            <ng-template [ngIf]="message.fromUserId != clientId">
+                                <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="Admin">
+                            </ng-template>
+                            <ng-template [ngIf]="message.fromUserId == clientId">
+                                <img class="avatar" src="https://img.icons8.com/color/36/000000/user-male.png" alt="You">
+                            </ng-template>
+                            <div class="media-body">
+                                <p>{{message.content}}</p>
+                                <p class="meta"><time>{{message.creationDate | date:'h:mm'}}</time></p>
+                            </div>
+                        </div>
+        
+                        <!-- <div class="media media-chat media-chat-reverse">
+                            <div class="media-body">
+                                <p>Hiii, I'm good.</p>
+                                <p>How are you doing?</p>
+                                <p>Long time no see! Tomorrow office. will be free on sunday.</p>
+                                <p class="meta"><time>00:06</time></p>
+                            </div>
+                        </div> -->
+                    <!-- <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;">
+                        <div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;">
+                        </div>
+                    </div> -->
+                    <div class="ps-scrollbar-y-rail" style="top: 0px; height: 0px; right: 2px;">
+                        <div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 2px;">
+                        </div>
+                    </div>
+                </div>
+                    <div class="publisher bt-1 border-light">
+                        <input class="publisher-input"
+                                type="text" 
+                                [(ngModel)]="messageDto.content"
+                                placeholder="Write something">
+                        <button type="submit"
+                            (click)="sendMessage()">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+             </div>
+         </div>
+     </div>
+</div>

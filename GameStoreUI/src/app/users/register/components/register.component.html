@@ -1,0 +1,104 @@
+<div class="container">
+    <h2>Registration</h2>
+    <form #form="ngForm"
+          (submit)="register()">
+        <div class="form-group">
+            <label for="user">Username</label>
+            <div class="input-field">
+                <input class="form-control form-control-lg"
+                       placeholder="Your username"
+                       id="username"
+                       name="username"
+                       #username="ngModel"
+                       [(ngModel)]="userForm.username"
+                       required>
+                <span></span>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col_half">
+                <label for="user">First Name</label>
+                <div class="input-field">
+                    <input class="form-control"
+                           placeholder="Your first name"
+                           id="firstname"
+                           name="firstName"
+                           #firstName="ngModel"
+                           [(ngModel)]="userForm.firstName">
+                    <span></span>
+                </div>
+            </div>
+            <div class="col_half">
+                <label for="user">Last Name</label>
+                <div class="input-field">
+                    <input class="form-control"
+                           placeholder="Your last name"
+                           id="lastname"
+                           name="lastName"
+                           #lastName="ngModel"
+                           [(ngModel)]="userForm.lastName">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="user">Telephone Number</label>
+            <div class="input-field">
+                <input class="form-control"
+                       placeholder="Your telephone number"
+                       id="tenephoneNumber"
+                       name="telephoneNumber"
+                       #telephoneNumber="ngModel"
+                       [(ngModel)]="userForm.telephoneNumber">
+                <span></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="user">Email</label>
+            <div class="input-field">
+                <input class="form-control"
+                       placeholder="Your @gmail.com"
+                       id="email"
+                       name="email"
+                       type="email"
+                       #email="ngModel"
+                       [(ngModel)]="userForm.email"
+                       pattern=".+@gmail\.com"
+                       required>
+                <span></span>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="col_half">
+                <label for="pwd">Password:</label>
+                <div class="input-field">
+                    <input class="form-control"
+                           placeholder="Your password"
+                           id="pwd"
+                           type="password"
+                           name="password"
+                           #password="ngModel"
+                           [(ngModel)]="userForm.password"
+                           required>
+                    <span></span>
+                </div>
+            </div>
+            <div class="col_half">
+                <label for="pwd">Repeat Password:</label>
+                <div class="input-field">
+                    <input class="form-control"
+                           placeholder="Your password"
+                           id="pwd"
+                           type="password"
+                           name="repeatPassword"
+                           #repeatPassword="ngModel"
+                           [(ngModel)]="userForm.repeatPassword"
+                           required>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <button type="submit"
+                class="btn btn-primary">Register</button>
+    </form>
+</div>

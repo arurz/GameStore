@@ -1,0 +1,33 @@
+<div class="container">
+  <h2>Company Creation</h2>
+  <form #form="ngForm"
+        (submit)="createCompany()">
+    <div class="form-group">
+      <label for="company">Name</label>
+      <input class="form-control form-control-lg"
+             name="name"
+             #name="ngModel"
+             [(ngModel)]="companyForm.name">
+    </div>
+    <div class="form-group">
+      <label for="company">Company Information</label>
+      <input class="form-control"
+             name="companyInfo"
+             #companyInfo="ngModel"
+             [(ngModel)]="companyForm.companyInfo">
+    </div>
+    <div class="form-group">
+      <label for="company">Country</label>
+      <input class="form-control"
+             name="country"
+             #country="ngModel"
+             [(ngModel)]="companyForm.country">
+    </div>
+    <button type="submit"
+            class="btn btn-primary">Create
+    </button>
+  </form>
+
+</div>
+
+<!-- {{companyForm | json}} -->

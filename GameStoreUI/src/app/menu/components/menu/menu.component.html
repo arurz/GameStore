@@ -1,0 +1,75 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand"
+     routerLink="/games">GameStore</a>
+  <button class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" 
+       id="navbarSupportedContent">
+    <ul class="navbar-nav" *ngFor="let attribute of gameAttributes?.items">
+      <li class="nav-item dropdown" *ngIf="attribute.isActive">
+        <a class="nav-link dropdown-toggle" 
+           id="navbarDropdown"
+           role="button"
+           data-toggle="dropdown"
+           aria-haspopup="true"
+           aria-expanded="false">{{attribute.label}}</a>
+        <div class="dropdown-menu"
+           aria-labelledby="navbarDropdown">
+        <a class="dropdown-item"
+           *ngFor="let item of attribute?.items"
+           routerLink={{attribute.link}}{{item.id}}>{{item.name}}</a>
+      </div>
+      </li>
+    </ul>
+
+    <form class="form-inline my-2 my-lg-0 mr-auto"
+          id="search-button">
+      <button class="btn btn-outline-success my-2 my-sm-0"
+              routerLink="menu/search">Search</button>
+    </form>
+
+    <div *ngIf="outsideLoginPage && !loggedIn ">
+      <div>
+        <button type="submit"
+                class="btn btn-primary"
+                routerLink='login'
+                style="margin-right: 1rem;">Login</button>
+      </div>
+    </div>
+
+    <div *ngIf="loggedIn">
+      <form class="form-inline my-2 my-lg-0 mr-auto">
+        <div class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
+             <i class="fa fa-user"></i> 
+            My Account
+          </a>
+          <div class="dropdown-menu"
+              aria-labelledby="navbarDropdown">
+            <div class="dropdown-item" 
+              *ngFor="let item of menuItems?.items">
+              <div *ngIf="item?.isActive" routerLink="{{item?.routerLink}}">{{item?.label}}</div>
+            </div>
+             <a class="dropdown-item logout"
+                (click)="logout()">
+              Log Out
+            </a> 
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,50 @@
+<div class="container">
+  <div *ngIf="company">
+    <form #form="ngForm"
+          (submit)="updateCompany()">
+      <div class="form-group">
+        <label for="company-name">Game name: </label>
+        <input class="form-control form-control-lg"
+               name="name"
+               #name="ngModel"
+               [(ngModel)]="company.name">
+      </div>
+      <div class="form-group">
+        <div class="form-check">
+          <input class="form-check-input"
+                 id="flexCheckChecked"
+                 type="checkbox"
+                 [checked]="company.isActive"
+                 name="isActive"
+                 #isActive="ngModel"
+                 [(ngModel)]="company.isActive">
+          <label for="company-isActive">Active: </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="company-country">Country: </label>
+        <input class="form-control form-control-lg"
+               name="country"
+               #country="ngModel"
+               [(ngModel)]="company.country">
+      </div>
+      <div class="form-group">
+        <label for="company-companyInfo">Company Info: </label>
+        <input class="form-control form-control-lg"
+               name="companyInfo"
+               #companyInfo="ngModel"
+               [(ngModel)]="company.companyInfo">
+      </div>
+      <div class="form-group">
+        <label for="company-viewOrder">View Order: </label>
+        <input class="form-control form-control-lg"
+               name="viewOrder"
+               #viewOrder="ngModel"
+               [(ngModel)]="company.viewOrder">
+      </div>
+      <button type="submit"
+              class="btn btn-primary">Edit
+      </button>
+    </form>
+  </div>
+</div>

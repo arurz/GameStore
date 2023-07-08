@@ -1,0 +1,45 @@
+<div class="container">
+  <div *ngIf="game">
+    <form #form="ngForm"
+          (submit)="updateGame()">
+      <div class="form-group">
+        <label for="game-name">Game name: </label>
+        <input class="form-control form-control-lg"
+               name="name"
+               #name="ngModel"
+               [(ngModel)]="game.name">
+      </div>
+      <div class="form-group">
+        <label for="game-picture">Picture: </label>
+        <input class="form-control form-control-lg"
+               name="picture"
+               #picture="ngModel"
+               [(ngModel)]="game.picture">
+      </div>
+      <div class="form-group">
+        <label for="game-description">Description: </label>
+        <input class="form-control form-control-lg"
+               name="description"
+               #description="ngModel"
+               [(ngModel)]="game.description">
+      </div>
+      <div class="form-group">
+        <label for="game-minimumSystemRequirements">Minimum System Requirements: </label>
+        <input class="form-control form-control-lg"
+               name="minimumSystemRequirements"
+               #minimumSystemRequirements="ngModel"
+               [(ngModel)]="game.minimumSystemRequirements">
+      </div>
+      <div class="form-group">
+        <label for="game-price">Price: </label>
+        <input class="form-control form-control-lg"
+               name="price"
+               #price="ngModel"
+               [(ngModel)]="game.price">
+      </div>
+      <button type="submit"
+              class="btn btn-primary">Edit
+      </button>
+    </form>
+  </div>
+</div>

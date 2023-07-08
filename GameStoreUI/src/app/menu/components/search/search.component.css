@@ -1,0 +1,35 @@
+.game-block{
+  display: block;
+  margin-top: 10px;
+  width: 330px;
+  height: 550px;
+  margin-right: 1rem;
+  border-left: 2px solid rgb(172, 170, 170); 
+  padding-left: 1rem;
+  transition: 0.5s;
+}
+img{
+  width: 250px;
+  height: 350px;
+  margin-top: 30px;
+  margin-left: 1rem;
+  margin-right: auto;
+}
+.game-block:hover{
+  transition: 0.5s;
+  box-shadow: 0 0 15px rgb(0 0 0 / 15%);
+  transform: scale(1.03);
+  background-color:#d9d9d9;
+}
+a{
+  text-decoration: none;
+}
+
+.name, .price{
+  padding-top: 1rem;
+  padding-left: 20px;
+  color: black;
+}
+.container {
+  max-width: 1350px;
+}

@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Login</h2>
+    <form #form="ngForm"
+          (submit)="login()">
+        <div class="form-group">
+            <label for="user">Username:</label>
+            <input class="form-control form-control-lg"
+                   name="username"
+                   nameSymbolValidator
+                   [language]="'en'"
+                   #username="ngModel"
+                   [(ngModel)]="dto.username"
+                   required>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input class="form-control form-control-lg"
+                   type="password"
+                   name="password"
+                   #password="ngModel"
+                   [(ngModel)]="dto.password"
+                   required>
+        </div>
+        <button type="submit"
+                class="btn btn-primary mr-3">Login</button>
+        <button type="submit"
+                class="btn btn-primary mr-3"
+                routerLink='/register'>Register</button>
+        <button type="submit"
+                class="btn btn-danger"
+                routerLink="/restorePassword">Forget your password?</button>
+    </form>
+</div>

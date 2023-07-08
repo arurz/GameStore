@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 style="margin-top: 1rem;">My Cart</h2>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col"
+            style="width: 20%;">Picture</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="gameFromCart"
+          *ngFor="let dto of games, let i = index">
+        <img src="{{dto.picture}}"
+             style="width: 170px;
+        height: 220px;">
+        <th scope="row">{{dto.name}}</th>
+        <th scope="row">{{dto.price | currency}}</th>
+        <th scope="row">
+          <button type="submit"
+                  (click)="deleteCart(dto.id, i)"
+                  class="btn btn-danger mr-3">Delete</button>
+        </th>
+      </tr>
+    </tbody>
+    <div class="cart-info">
+      <h3>Total: {{totalPrice | currency}}</h3>
+      <button type="button"
+              (click)="buyGames()"
+              class="btn btn-primary">Buy</button>
+    </div>
+
+  </table>
+</div>

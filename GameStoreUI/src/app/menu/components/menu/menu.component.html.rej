@@ -1,0 +1,10 @@
+diff a/GameStoreUI/src/app/menu/components/menu/menu.component.html b/GameStoreUI/src/app/menu/components/menu/menu.component.html	(rejected hunks)
+@@ -11,7 +11,7 @@
+             Genres
+           </a>
+           <div class="dropdown-menu" aria-labelledby="navbarDropdown"> 
+-            <div class="dropdown-item" *ngFor="let genre of genres" (click)="getGamesByGenre(genre.id)">{{genre.name}}</div>
++            <div class="dropdown-item" *ngFor="let genre of genres" (click)="genregame.getGamesByGenreId(genre.id)">{{genre.name}}</div><app-game-genre #genregame></app-game-genre>
+           </div>
+         </li>
+         <li class="nav-item dropdown">

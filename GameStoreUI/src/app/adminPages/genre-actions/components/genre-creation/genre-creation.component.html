@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Genre Creation</h2>
+  <form #form="ngForm"
+        (submit)="createGenre()">
+    <div class="form-group">
+      <label for="genre">Name</label>
+      <input class="form-control form-control-lg"
+             name="name"
+             #name="ngModel"
+             [(ngModel)]="genreForm.name">
+    </div>
+    <div class="form-group">
+      <label for="genre">Description</label>
+      <input class="form-control"
+             name="description"
+             #description="ngModel"
+             [(ngModel)]="genreForm.description">
+    </div>
+    <button type="submit"
+            class="btn btn-primary">Create
+    </button>
+  </form>
+
+</div>

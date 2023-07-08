@@ -1,0 +1,13 @@
+.container{
+  margin-left: 40em;
+}
+.col_half{
+  padding: 1rem;
+}
+.input-field{
+  display: flex;
+}
+
+.btn-primary{
+  margin-right: 2rem;
+}

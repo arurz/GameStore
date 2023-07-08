@@ -1,0 +1,13 @@
+.gameFromCart th{
+  padding-top: 4rem;
+}
+img{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+tbody{
+  border-bottom: 2px solid rgb(172, 170, 170);
+}
+h3{
+  margin-top: 1rem;
+}

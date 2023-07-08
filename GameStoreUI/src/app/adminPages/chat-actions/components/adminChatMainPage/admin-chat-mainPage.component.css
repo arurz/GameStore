@@ -1,0 +1,19 @@
+.scrollmenu {
+    overflow: scroll; 
+    height: xyz;
+    overflow-y: hidden;
+}
+  
+.scrollmenu li {
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+}
+  
+.scrollmenu li:hover {
+    background-color: #777;
+}
+
+.scrollmenu.nav{
+    flex-wrap: nowrap;
+}

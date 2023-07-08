@@ -1,0 +1,34 @@
+.col_half{
+  padding: 1rem;
+}
+.container{
+  margin-left: 40em;
+}
+input:invalid{
+  box-shadow: 0 0 5px 1px red;
+}
+input:valid{
+  box-shadow: 0 0 5px 1px green;
+}
+input:invalid + span::before {
+  content: '✖';
+  color: red;
+}
+
+.input-field{
+  display: flex;
+}
+
+input:valid + span::before {
+  content: '✓';
+  color: green;
+}
+input + span {
+  position: relative;
+}
+input{
+  margin-right: 1rem;
+}
+span{
+  margin-top: 0.5rem;
+}

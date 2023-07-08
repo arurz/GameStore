@@ -1,0 +1,65 @@
+img{
+  width: 450px;
+  height: 500px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.3s;
+}
+.title{
+  border-bottom: 2px solid rgb(172, 170, 170);
+  margin-bottom: 2rem;
+}
+.content{
+  display: flex;
+}
+.content-left{
+  width: 500px;
+}
+.content-right{
+  margin-left: 100px;
+  width: 650px;
+}
+.user{
+  margin-right: 2rem;
+}
+.comment-data{
+  display: flex;
+}
+textarea{
+  width: 100%;
+  height: 150px;
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  resize: none;
+}
+.game{
+  font-family: Play,Arial,sans-serif;
+  margin-left: 25rem;
+}
+.comment{
+  margin-bottom: 1rem;
+}
+.comment-data{
+  margin-bottom: 0.5rem;
+}
+.comment-content{
+  margin-left: 1rem;
+}
+.comment-button{
+  width: 80px;
+  height: 28px;
+  color: white;
+  border-radius: 4px;
+  background-color: darkslategrey;
+  transition:0.4s;
+}
+.comment-button:hover{
+  background-color: orangered;
+}
+.btn{
+  margin-top: 1rem;
+}

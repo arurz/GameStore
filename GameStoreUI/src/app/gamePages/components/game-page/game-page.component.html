@@ -1,0 +1,55 @@
+<div *ngIf="game">
+    <div class="game">
+        <h1>{{game.name}}</h1>
+        <div class="content">
+            <div class="content-left">
+                <img src="{{game.picture}}">
+                <h2 class="title">Minimum System Requirements </h2>
+                <h4>{{game.minimumSystemRequirements}}</h4>
+                <h2>Add to Card</h2>
+                <button type="button"
+                        (click)="addGameToCard()"
+                        class="btn btn-primary">{{game.price | currency}}</button>
+            </div>
+            <div class="content-right">
+                <h2 class="title">Description</h2>
+                <h4>{{game.description}}</h4>
+                <h2 class="title">Comments</h2>
+                <div class="comments">
+                    <div class="comment"
+                         *ngFor="let comment of game.comments">
+                        <div class="comment-data">
+                            <div class="user">
+                                <h5>
+                                    <strong>
+                                        {{comment.username}}
+                                    </strong>
+                                </h5>
+                            </div>
+                            <div class="date">
+                                <h5>{{comment.creationDate | date: 'mediumDate'}}</h5>
+                            </div>
+                        </div>
+                        <div class="comment-content">
+                            <h5>{{comment.content}}</h5>
+                        </div>
+                    </div>
+                </div>
+                <form class="comment-form">
+                    <textarea placeholder="Write your comment..."
+                              class="form-control"
+                              name="content"
+                              #content="ngModel"
+                              [(ngModel)]="comment.content"></textarea>
+                </form>
+                <button type="button"
+                        class="btn btn-primary"
+                        (click)="createComment()">
+                    <div class="submit">
+                        <strong>Submit</strong>
+                    </div>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

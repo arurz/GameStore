@@ -1,0 +1,13 @@
+{
+    "toastrError": {
+        "202": "Invalid username or password!",
+        "201": "User with this email already exists",
+		"206": "New paswords missmatch",
+		"207": "Old password missmatch",
+        "209": "User not found",
+		"210": "You already have this game in your cart or you bought it",
+        "211": "Current username is already taken",
+
+        "301": "Game already exists"
+    }
+}

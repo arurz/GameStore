@@ -1,0 +1,14 @@
+<h2>Games</h2>
+<div class="games container">
+    <div class="row">
+        <a *ngFor="let game of games"
+           routerLink="/games/{{game.id}}"
+           class="col-sm-12 col-md-3">
+            <div class="game-block">
+                <img src="{{game.picture}}">
+                <h2 class="name">{{game.name}}</h2>
+                <h3 class="price">{{game.price | currency}}</h3>
+            </div>
+        </a>
+    </div>
+</div>

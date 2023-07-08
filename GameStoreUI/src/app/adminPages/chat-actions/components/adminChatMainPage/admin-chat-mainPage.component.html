@@ -1,0 +1,25 @@
+<div class="container">
+    <h2 style="margin-top: 1rem;">Admin Page</h2>
+    <div class="buttons"
+         style="margin: 1rem;">
+      <button type="submit"
+              class="btn btn-primary"
+              style="margin-right: 1rem;"
+              (click)='redirectToGames()'>Games</button>
+      <button type="submit"
+              style="margin-right: 1rem;"
+              class="btn btn-primary"
+              (click)='redirectToGenres()'>Genres</button>
+      <button type="submit"
+              class="btn btn-primary"
+              (click)='redirectToCompanies()'>Companies</button>
+    </div>
+    <ul class="scrollmenu nav nav-tabs">
+        <li class="nav-item" 
+          *ngFor="let user of users" 
+          (click)="selectChat(user)">
+          <span [ngClass]="{'h4': user.selected}">{{user.username}}</span> 
+        </li>
+    </ul>
+    <admin-chat-page></admin-chat-page>
+</div>

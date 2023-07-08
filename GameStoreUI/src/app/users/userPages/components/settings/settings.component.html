@@ -1,0 +1,64 @@
+<div class="container">
+  <h2>Settings</h2>
+  <div *ngIf="userSettings">
+    <form #form="ngForm">
+      <div class="form-group">
+        <label for="userSettings-username">Username: </label>
+        <input class="form-control form-control-lg"
+               name="username"
+               #username="ngModel"
+               [(ngModel)]="userSettings.username"
+               required>
+      </div>
+      <div class="row clearfix">
+        <div class="col_half">
+          <label for="user">First Name</label>
+          <div class="input-field">
+            <input class="form-control"
+                   placeholder="Your first name"
+                   id="firstname"
+                   name="firstName"
+                   #firstName="ngModel"
+                   [(ngModel)]="userSettings.firstName">
+          </div>
+        </div>
+        <div class="col_half">
+          <label for="user">Last Name</label>
+          <div class="input-field">
+            <input class="form-control"
+                   placeholder="Your last name"
+                   id="lastname"
+                   name="lastName"
+                   #lastName="ngModel"
+                   [(ngModel)]="userSettings.lastName">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="userSettings-Email">Email: </label>
+        <input class="form-control form-control-lg"
+               name="email"
+               #email="ngModel"
+               [(ngModel)]="userSettings.email"
+               required>
+      </div>
+      <div class="form-group">
+        <label for="game-price">Phone Number: </label>
+        <input class="form-control form-control-lg"
+               name="telephoneNumber"
+               #telephoneNumber="ngModel"
+               [(ngModel)]="userSettings.telephoneNumber">
+      </div>
+      <div class="buttons">
+        <button type="submit"
+                class="btn btn-primary"
+                (click)="updateSettings()">Edit
+        </button>
+        <button type="submit"
+                class="btn btn-danger"
+                routerLink="/settings/password">Change Password
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

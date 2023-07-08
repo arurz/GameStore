@@ -1,0 +1,94 @@
+<div class="container">
+  <h2>Game Searching</h2>
+  <form #form="ngForm"
+        (submit)="searchGame()">
+    <div class="form-group">
+      <label for="user">Name</label>
+      <input class="form-control form-control-lg"
+             [(ngModel)]="this.searchDto.name"
+             name="name">
+    </div>
+    <div class="form-group">
+      <label for="genre">Genres</label>
+      <div class="row">
+        <div class="col">
+          <ng-multiselect-dropdown name="genre"
+                                   [placeholder]="'Select Genre'"
+                                   [data]="genresDto"
+                                   [(ngModel)]="selectedGenres"
+                                   [settings]="dropdownGenreSettings">
+            <ng-template *ngFor="let dto of genresDto, let i = index"
+                         #optionsTemplate
+                         let-id="typeId"
+                         let-isSelected="isSelected">
+              <div style="
+                          padding: 1px 10px;
+                          margin-right: 10px;
+                          right: 2px;
+                          top: -2px;">
+                <label style="color: #333; min-width: 130px; font-weight: normal;">{{dto.name}}</label>
+              </div>
+            </ng-template>
+          </ng-multiselect-dropdown>
+
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="company">Companies</label>
+      <div class="row">
+        <div class="col">
+          <ng-multiselect-dropdown name="company"
+                                   [placeholder]="'Select Company'"
+                                   [data]="companiesDto"
+                                   [(ngModel)]="selectedCompanies"
+                                   [settings]="dropdownCompanySettings">
+            <ng-template *ngFor="let dto of companiesDto, let i = index"
+                         #optionsTemplate
+                         let-id="companyId"
+                         let-isSelected="isSelected">
+              <div style="
+                          padding: 1px 10px;
+                          margin-right: 10px;
+                          right: 2px;
+                          top: -2px;">
+                <label style="color: #333; min-width: 130px; font-weight: normal;">{{dto.name}}</label>
+              </div>
+            </ng-template>
+          </ng-multiselect-dropdown>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="user">Min. Price</label>
+      <input class="form-control"
+             [(ngModel)]="this.searchDto.priceBottomBound"
+             name="min-price">
+    </div>
+    <div class="form-group">
+      <label for="user">Max. Price</label>
+      <input class="form-control"
+             [(ngModel)]="this.searchDto.priceTopBound"
+             name="max-price">
+    </div>
+    <button type="submit"
+            class="btn btn-primary">Search
+    </button>
+  </form>
+
+</div>
+
+<h2 *ngIf="games">Games</h2>
+<div class="games container">
+  <div class="row">
+    <a *ngFor="let game of games"
+       routerLink="/games/{{game.id}}"
+       class="col-sm-12 col-md-3">
+      <div class="game-block">
+        <img src="{{game.picture}}">
+        <h2 class="name">{{game.name}}</h2>
+        <h3 class="price">{{game.price | currency}}</h3>
+      </div>
+    </a>
+  </div>
+</div>
