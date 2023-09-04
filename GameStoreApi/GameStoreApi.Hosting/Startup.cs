@@ -48,7 +48,7 @@ namespace GameStoreApi.Hosting
 				.AllowAnyMethod()
 				.AllowCredentials());
 
-			app.UseMiddleware<ErrorLoggingMiddleware>();
+			//app.UseMiddleware<ErrorLoggingMiddleware>();
 
 			app.UseRouting();
 
