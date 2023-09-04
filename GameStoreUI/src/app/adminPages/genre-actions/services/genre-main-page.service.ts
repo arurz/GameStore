@@ -17,8 +17,8 @@ export class GenreMainPageService {
     return this.http.get<NomenclatureIdNameDto[]>(this.url);
   }
 
-  getGenresDto(): Observable<GenreDto[]> {
-    return this.http.get<GenreDto[]>(`${this.url}/dto`);
+  getGenresDto(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.url}/dto`);
   }
 
   deleteGenre(id: number): Observable<Genre> {

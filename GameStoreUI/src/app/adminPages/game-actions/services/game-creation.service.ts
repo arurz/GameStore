@@ -34,11 +34,11 @@ export class GameActionService {
       );
   }
 
-  getCompamiesNames(): Observable<CompanyDto[]> {
-    return this.http.get<CompanyDto[]>('/api/admin/companies/companiesId')
+  getCompamiesNames(): Observable<any[]> {
+    return this.http.get<any[]>('/api/admin/companies')
       .pipe(
         tap(_ => console.log('fetched companies')),
-        catchError(this.handleError<CompanyDto[]>('getCompamiesNames', []))
+        catchError(this.handleError<any[]>('getCompamiesNames', []))
       );
   }
 

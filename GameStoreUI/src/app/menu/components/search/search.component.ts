@@ -3,13 +3,10 @@ import { Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { GameActionService } from '../../../adminPages/game-actions/services/game-creation.service';
 import { GenreMainPageService } from '../../../adminPages/genre-actions/services/genre-main-page.service';
-import { MainPageComponent } from '../../../gamePages/components/main-page/main-page.component';
-import { GameDto } from '../../../gamePages/models/game-dto.model';
 import { Game } from '../../../gamePages/models/game.model';
-import { CompanyDto } from '../../../nomenclatures/companies/models/company-dto.model';
-import { GenreDto } from '../../../nomenclatures/genres/models/genre-dto.model';
 import { SearchDto } from '../../models/search-dto.model';
 import { SearchService } from '../../services/search.service';
+import { NomenclatureIdNameDto } from '../../../nomenclatures/models/nomenclature-id-name-dto.model';
 
 @Component({
   selector: 'app-search',
@@ -21,11 +18,10 @@ export class SearchComponent implements OnInit {
   searchDto: SearchDto = new SearchDto();
   games: Game[];
 
-  genresDto: GenreDto[];
-  companiesDto: CompanyDto[];
-
-  selectedGenres: GenreDto[];
-  selectedCompanies: CompanyDto[];
+  genresDto: NomenclatureIdNameDto[] = [];
+  companiesDto: NomenclatureIdNameDto[] = [];
+  selectedGenres: NomenclatureIdNameDto[] = [];
+  selectedCompanies: NomenclatureIdNameDto[] = [];
 
   dropdownGenreSettings: IDropdownSettings = {};
   dropdownCompanySettings: IDropdownSettings = {};
@@ -43,7 +39,7 @@ export class SearchComponent implements OnInit {
 
     this.dropdownCompanySettings = {
       singleSelection: false,
-      idField: "companyId",
+      idField: "id",
       textField: "name",
       selectAllText: "Select All",
       unSelectAllText: "UnSelect All",
@@ -52,7 +48,7 @@ export class SearchComponent implements OnInit {
     };
     this.dropdownGenreSettings = {
       singleSelection: false,
-      idField: "typeId",
+      idField: "id",
       textField: "name",
       selectAllText: "Select All",
       unSelectAllText: "UnSelect All",
@@ -73,7 +69,7 @@ export class SearchComponent implements OnInit {
 
   addGenreToDto(): void {
     for (let i = 0; i < this.selectedGenres.length; i++) {
-      var genre: number = this.selectedGenres[i].typeId;
+      var genre: number = this.selectedGenres[i].id;
       this.searchDto.genres.push(genre);
     }
     this.selectedGenres = [];
@@ -81,7 +77,7 @@ export class SearchComponent implements OnInit {
 
   addCompanyToDto(): void {
     for (let i = 0; i < this.selectedCompanies.length; i++) {
-      var gameCompany: number = this.selectedCompanies[i].companyId;
+      var gameCompany: number = this.selectedCompanies[i].id;
       this.searchDto.companies.push(gameCompany);
     }
     this.selectedCompanies = [];

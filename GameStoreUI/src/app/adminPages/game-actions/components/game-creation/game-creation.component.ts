@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { Game, GameCompany, GameGenre } from '../../../../gamePages/models/game.model';
-import { CompanyDto } from '../../../../nomenclatures/companies/models/company-dto.model';
-import { GenreDto } from '../../../../nomenclatures/genres/models/genre-dto.model';
 import { GenreMainPageService } from '../../../genre-actions/services/genre-main-page.service';
 import { GameActionService } from '../../services/game-creation.service';
+import { NomenclatureIdNameDto } from '../../../../nomenclatures/models/nomenclature-id-name-dto.model';
 
 @Component({
   selector: 'app-game-action',
@@ -14,10 +13,10 @@ import { GameActionService } from '../../services/game-creation.service';
 })
 export class GameActionComponent implements OnInit {
 
-  genresDto: GenreDto[] = [];
-  companiesDto: CompanyDto[] = [];
-  selectedGenres: GenreDto[] = [];
-  selectedCompanies: CompanyDto[] = [];
+  genresDto: NomenclatureIdNameDto[] = [];
+  companiesDto: NomenclatureIdNameDto[] = [];
+  selectedGenres: NomenclatureIdNameDto[] = [];
+  selectedCompanies: NomenclatureIdNameDto[] = [];
 
   gameForm: Game = new Game();
   dropdownGenreSettings: IDropdownSettings = {};
@@ -34,7 +33,7 @@ export class GameActionComponent implements OnInit {
     this.getCompanies();
     this.dropdownCompanySettings = {
       singleSelection: false,
-      idField: "companyId",
+      idField: "id",
       textField: "name",
       selectAllText: "Select All",
       unSelectAllText: "UnSelect All",
@@ -43,7 +42,7 @@ export class GameActionComponent implements OnInit {
     };
     this.dropdownGenreSettings = {
       singleSelection: false,
-      idField: "typeId",
+      idField: "id",
       textField: "name",
       selectAllText: "Select All",
       unSelectAllText: "UnSelect All",
@@ -59,7 +58,12 @@ export class GameActionComponent implements OnInit {
 
   getCompanies(): void {
     this.gameActionService.getCompamiesNames()
-      .subscribe(companiesDto => this.companiesDto = companiesDto);
+      .subscribe(companiesDto => {
+        debugger;
+        this.companiesDto = companiesDto;
+        console.log(this.companiesDto);
+        console.log(companiesDto);
+      });
   }
 
   handleFileInput(eventData: any) {
@@ -69,7 +73,7 @@ export class GameActionComponent implements OnInit {
 
   addToGameGenre(): void {
     for (let i = 0; i < this.selectedGenres.length; i++) {
-      var gameGenre: GameGenre = { typeId: this.selectedGenres[i].typeId };
+      var gameGenre: GameGenre = { typeId: this.selectedGenres[i].id };
       this.gameForm.GameTypes.push(gameGenre);
     }
 
@@ -78,7 +82,7 @@ export class GameActionComponent implements OnInit {
 
   addToGameCompany(): void {
     for (let i = 0; i < this.selectedCompanies.length; i++) {
-      var gameCompany: GameCompany = { companyId: this.selectedCompanies[i].companyId };
+      var gameCompany: GameCompany = { companyId: this.selectedCompanies[i].id };
       this.gameForm.GameCompanies.push(gameCompany);
     }
 
