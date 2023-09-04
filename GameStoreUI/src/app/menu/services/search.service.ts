@@ -36,7 +36,7 @@ export class SearchService {
   }
 
   public search(searchDto: SearchDto): Observable<Game[]> {
-    let query = "/api/games/getGamesByParametres";
+    let query = "/api/game/getGamesByParametres";
     query += this.composeQueryString(searchDto);
     return this.http.get<Game[]>(query);
   }

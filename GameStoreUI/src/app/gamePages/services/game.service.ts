@@ -11,7 +11,7 @@ import { Game } from '../models/game.model';
 })
 export class GameService {
 
-  readonly url = "api/games";
+  readonly url = "api/game";
   constructor(private http: HttpClient) { }
 
   private handleError<T>(operation = 'operation', result?: T) {
