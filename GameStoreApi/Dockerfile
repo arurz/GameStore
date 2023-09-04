@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /src
+WORKDIR /GameStoreApi
 COPY ["GameStoreApi.Hosting/GameStoreApi.Hosting.csproj", "GameStoreApi.Hosting/"]
 COPY ["GameStoreApi.Application/GameStoreApi.Application.csproj", "GameStoreApi.Application/"]
 COPY ["GameStoreApi.Data/GameStoreApi.Data.csproj", "GameStoreApi.Data/"]
