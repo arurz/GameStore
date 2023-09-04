@@ -7,6 +7,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ApplicationIcon />
     <OutputType>Exe</OutputType>
+    <UserSecretsId>26319af9-b3e7-4e10-aa70-053eaf42d933</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
