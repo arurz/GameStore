@@ -25,7 +25,11 @@ namespace GameStoreApi.Hosting
 
 			services.AddAuthenticationService(Configuration);
 
-			services.AddServices();
+            services.AddControllers().AddNewtonsoftJson(options =>
+				options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+			);
+
+            services.AddServices();
 
 			services.AddControllers();
 

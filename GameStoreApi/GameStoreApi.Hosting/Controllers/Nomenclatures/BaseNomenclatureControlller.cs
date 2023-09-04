@@ -27,14 +27,18 @@ namespace GameStoreApi.Hosting.Controllers.Nomenclatures
 		[HttpGet("api/[controller]/all")]
 		public async Task<List<T>> GetAllNomenclaturesByType() => await nomenclatureService.GetAllNomenclatures();
 
-		//[HttpGet("api/admin/[controller]")]
-		//public async Task<ActionResult<List<NomenclatureIdNameDto>>> GetNomenclatureIdNameDtos() => await nomenclatureService.GetNomenclatureIdNameDtos();
+		[HttpGet("api/admin/[controller]")]
+		public async Task<ActionResult<List<NomenclatureDto>>> GetNomenclatureIdNameDtos() => await nomenclatureService.GetNomenclatureDtos();
 
 		//[HttpGet("api/admin/[controller]/dto")]
 		//public async Task<ActionResult<List<NomenclatureIdDto>>> GetNomenclatureDtos()
 		//{
 		//	return await nomenclatureService.GetNomenclatureIdDtos();
 		//}
+
+		[HttpGet("api/admin/[controller]/dto")]
+		public async Task<ActionResult<List<NomenclatureDto>>> GetNomenclatureIdDtos() => await nomenclatureService.GetNomenclatureDtos();
+		
 
 		[HttpPost("api/admin/[controller]/create")]
 		public async Task<IActionResult> CreateNomenclature([FromBody] T entity)
