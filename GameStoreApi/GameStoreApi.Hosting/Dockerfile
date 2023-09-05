@@ -5,7 +5,7 @@ WORKDIR /app
 EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /src
+WORKDIR /GameStoreApi
 COPY ["GameStoreApi.Hosting/GameStoreApi.Hosting.csproj", "GameStoreApi.Hosting/"]
 COPY ["GameStoreApi.Application/GameStoreApi.Application.csproj", "GameStoreApi.Application/"]
 COPY ["GameStoreApi.Data/GameStoreApi.Data.csproj", "GameStoreApi.Data/"]
@@ -13,7 +13,7 @@ COPY ["GameStoreApi.Persistence/GameStoreApi.Persistence.csproj", "GameStoreApi.
 COPY ["GameStoreApi.Infrastructure/GameStoreApi.Infrastructure.csproj", "GameStoreApi.Infrastructure/"]
 RUN dotnet restore "GameStoreApi.Hosting/GameStoreApi.Hosting.csproj"
 COPY . .
-WORKDIR "/src/GameStoreApi.Hosting"
+WORKDIR "/GameStoreApi/GameStoreApi.Hosting"
 RUN dotnet build "GameStoreApi.Hosting.csproj" -c Release -o /app/build
 
 FROM build AS publish
