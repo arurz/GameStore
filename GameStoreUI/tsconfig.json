@@ -4,7 +4,7 @@
   "resolveJsonModule": true,
   "esModuleInterop": true,
   "compilerOptions": {
-    "baseUrl": "http://localhost:5000/games",
+    "baseUrl": "https://gamestore-api-westeu.azurewebsites.net/api/games",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,

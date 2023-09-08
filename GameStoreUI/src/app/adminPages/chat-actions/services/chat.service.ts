@@ -21,7 +21,7 @@ export class ChatService {
   currentUserId: number;
 
   private connection: any = new SignalR.HubConnectionBuilder()
-      .withUrl("http://localhost:5000/chatHub")
+      .withUrl("https://gamestore-api-westeu.azurewebsites.net/api/chatHub")
       .build();
 
   private sharedObj = new Subject<Message>();
