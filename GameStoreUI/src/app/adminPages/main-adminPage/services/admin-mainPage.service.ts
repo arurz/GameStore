@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { Game } from '../../../gamePages/models/game.model';
 import { GameNameIdDto } from '../models/game-name-id-dto.model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,10 @@ import { GameNameIdDto } from '../models/game-name-id-dto.model';
 export class AdminMainPageService {
 
   readonly url = '/api/admin';
-  constructor(private http: HttpClient) { }
+  serverUrl: string;
+  constructor(private http: HttpClient) { 
+    this.serverUrl = environment.baseURL;
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -22,7 +26,7 @@ export class AdminMainPageService {
   }
 
   getGame(id: number): Observable<Game> {
-    return this.http.get<Game>(`${this.url}/game/${id}`)
+    return this.http.get<Game>(`${this.serverUrl}/${this.url}/game/${id}`)
       .pipe(
         tap(_ => console.log('fetched game')),
         catchError(this.handleError<Game>('getGame'))
@@ -30,7 +34,7 @@ export class AdminMainPageService {
   }
 
   getGamesDto(): Observable<GameNameIdDto[]> {
-    return this.http.get<GameNameIdDto[]>(`${this.url}/names`)
+    return this.http.get<GameNameIdDto[]>(`${this.serverUrl}/${this.url}/names`)
       .pipe(
         tap(_ => console.log('fetched games')),
         catchError(this.handleError<GameNameIdDto[]>('getGamesDto', []))
@@ -38,7 +42,7 @@ export class AdminMainPageService {
   }
 
   deleteGame(id: number): Observable<Game> {
-    return this.http.delete<Game>(`${this.url}/delete/${id}`)
+    return this.http.delete<Game>(`${this.serverUrl}/${this.url}/delete/${id}`)
       .pipe(
         tap(_ => console.log(`deleted game id = ${id}`)),
         catchError(this.handleError<Game>(`deleteGame`))
@@ -46,6 +50,6 @@ export class AdminMainPageService {
   }
 
   updateGame(game: Game): Observable<any> {
-    return this.http.put<any>(`${this.url}/update`, game);
+    return this.http.put<any>(`${this.serverUrl}/${this.url}/update`, game);
   }
 }

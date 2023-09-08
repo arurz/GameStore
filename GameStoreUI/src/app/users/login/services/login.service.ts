@@ -9,7 +9,6 @@ export class LoginService {
   isLogged: boolean;
   emitter = new EventEmitter<LoginEvent>();
   
-  readonly Url = '/api/login';
   subscribe(next: (event: LoginEvent) => void) {
 	this.emitter.subscribe(next);
   }

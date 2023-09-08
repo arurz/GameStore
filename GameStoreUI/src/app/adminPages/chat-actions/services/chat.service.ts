@@ -8,12 +8,15 @@ import { TokenData } from '../../../users/current-user-data/models/token-data.en
 import { ChatUserDto } from '../models/chat-user-dto.model';
 import { Message } from '../models/message';
 import { MessageDto } from '../models/message-dto.model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChatService {
   readonly url = "api/chat"
+  serverUrl: string;
+
   selectedClientId = new Subject<number>();
   currentUserId: number;
 
@@ -26,6 +29,8 @@ export class ChatService {
   constructor(private httpClient: HttpClient,
     private toastr: ToastrService,
     private currentUserDataService: CurrentUserDataService) {
+      this.serverUrl = environment.baseURL;
+
     this.connection.onclose(async () => {
       await this.startConnection();
     });
@@ -66,14 +71,14 @@ export class ChatService {
   }
 
   public broadcastMessage(msgDto: MessageDto): Observable<Message> {
-    return this.httpClient.post<Message>(this.url, msgDto);
+    return this.httpClient.post<Message>(`${this.serverUrl}/${this.url}`, msgDto);
   }
 
   public getAllUsersWithChat(): Observable<ChatUserDto[]> {
-    return this.httpClient.get<ChatUserDto[]>(this.url + "/all");
+    return this.httpClient.get<ChatUserDto[]>(`${this.serverUrl}/${this.url}` + "/all");
   }
 
   public getChatMessages(id: number): Observable<Message[]>{
-    return this.httpClient.get<Message[]>(this.url + "/messages/" + id);
+    return this.httpClient.get<Message[]>(`${this.serverUrl}/${this.url}` + "/messages/" + id);
   }
 }

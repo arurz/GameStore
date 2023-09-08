@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { Genre } from '../../../nomenclatures/genres/models/genre.model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,10 @@ import { Genre } from '../../../nomenclatures/genres/models/genre.model';
 export class GenreEditingService {
 
   readonly url = '/api/admin/genres';
-  constructor(private http: HttpClient) { }
+  serverUrl: string;
+  constructor(private http: HttpClient) { 
+    this.serverUrl = environment.baseURL;
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -21,7 +25,7 @@ export class GenreEditingService {
   }
 
   getGenre(id: number): Observable<Genre> {
-    return this.http.get<Genre>(`${this.url}/${id}`)
+    return this.http.get<Genre>(`${this.serverUrl}/${this.url}/${id}`)
       .pipe(
         tap(_ => console.log('fetched genre')),
         catchError(this.handleError<Genre>('getGenre'))
@@ -29,7 +33,7 @@ export class GenreEditingService {
   }
 
   updateGenre(genre: Genre): Observable<any> {
-    return this.http.put<any>(`${this.url}/update`, genre);
+    return this.http.put<any>(`${this.serverUrl}/${this.url}/update`, genre);
   }
 
 

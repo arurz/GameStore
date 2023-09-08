@@ -59,7 +59,6 @@ export class GameActionComponent implements OnInit {
   getCompanies(): void {
     this.gameActionService.getCompamiesNames()
       .subscribe(companiesDto => {
-        debugger;
         this.companiesDto = companiesDto;
         console.log(this.companiesDto);
         console.log(companiesDto);
@@ -67,7 +66,6 @@ export class GameActionComponent implements OnInit {
   }
 
   handleFileInput(eventData: any) {
-    debugger;
     this.fileToUpload = eventData.target.files[0];
   }
 

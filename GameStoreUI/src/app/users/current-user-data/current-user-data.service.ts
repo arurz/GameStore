@@ -6,19 +6,22 @@ import { LoginEvent } from '../login/models/login-event.enum';
 import { LoginService } from '../login/services/login.service';
 import { UserContext } from './models/user-context.model';
 import { UserRoles } from './models/user-roles.enum';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentUserDataService {
-
+  serverUrl: string;
   constructor(private userContext: UserContext,
     private http: HttpClient, 
     private router: Router,
-    private loginService: LoginService) { }
+    private loginService: LoginService) { 
+      this.serverUrl = environment.baseURL;
+    }
 
   loadToken(form: LoginDto){
-    return this.http.post<any>('/api/login', form).subscribe((res) =>{
+    return this.http.post<any>(`${this.serverUrl}/api/login`, form).subscribe((res) =>{
       localStorage.setItem("token", res.token);
       this.loginService.emit(LoginEvent.login);
 

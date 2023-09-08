@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Company } from '../../../nomenclatures/companies/models/company.model';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,11 @@ import { Company } from '../../../nomenclatures/companies/models/company.model';
 export class CompanyEditingService {
 
   readonly url = 'api/admin/companies';
-  constructor(private http: HttpClient) { }
+  serverUrl: string;
+
+  constructor(private http: HttpClient) { 
+    this.serverUrl = environment.baseURL;
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -21,7 +26,7 @@ export class CompanyEditingService {
   }
 
   getCompany(id: number): Observable<Company> {
-    return this.http.get<Company>(`${this.url}/${id}`)
+    return this.http.get<Company>(`${this.serverUrl}/${this.url}/${id}`)
       .pipe(
         tap(_ => console.log('fetched company')),
         catchError(this.handleError<Company>('getCompany'))
@@ -29,6 +34,6 @@ export class CompanyEditingService {
   }
 
   updateCompany(company: Company): Observable<any> {
-    return this.http.put<any>(`${this.url}/update`, company);
+    return this.http.put<any>(`${this.serverUrl}/${this.url}/update`, company);
   }
 }
